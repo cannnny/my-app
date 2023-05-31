@@ -48,9 +48,9 @@ const TodoList = () => {
     //}
 
     // 削除時にタスクを完了させる関数を定義
-    const handleUpdateTask = (index) => {
+    const handleUpdateTask = (clickIndex) => {
         let currentTodos = todos.map((todo, todoIndex) => {
-            if(todoIndex === index){
+            if(todoIndex === clickIndex){
                 todo.isCompleted = !todo.isCompleted
             }
             return todo;
