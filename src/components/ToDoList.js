@@ -19,12 +19,15 @@ const TodoList = () => {
 
     // useStateにinitialStateを指定すると、todosにTodoリストが保存される
     const [todos, setTodos] = useState(initialState);
+    
     // 入力したタスクの情報を保持するための変数を定義
     const [newTodo, setNewTodo] = useState('');
+    
     // イベント時に実行される関数を定義
     const handleNewTask = (event) => {
         setNewTodo(event.target.value);
     }
+    
     // 追加ボタンの押下時に実行される関数を定義
     const handleSubmit = (event) => {
         event.preventDefault() // リロードさせない
@@ -33,8 +36,15 @@ const TodoList = () => {
         setTodos(todos => 
             [...todos, {task: newTodo, isCompleted: false}]
         )
-        // 入力欄を初期化
+        // 初期化
         setNewTodo('')
+    }
+
+    // 削除時に実行される関数を定義
+    const handleRemoveTask = (index) => {
+        const currentTodos = [...todos]
+        currentTodos.splice(index, 1)
+        setTodos(currentTodos)
     }
 
     return(
@@ -50,7 +60,8 @@ const TodoList = () => {
             </form>
             <ul>
                 {todos.map((todo, index) => (
-                    <li key={index}>{todo.task}</li>
+                    <li key={index}>{todo.task}<span onClick={() => handleRemoveTask(index)}>
+                     ✗</span></li>
                 ))}
             </ul>
         </div>
