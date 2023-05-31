@@ -6,27 +6,8 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const Hello = (props) => {
-  return (
-    <div>こんにちは、{props.children}さん</div>
-  );
-};
-
-const Greeting = (props) => {
-  return (
-    <div>
-      <div>ご挨拶</div>
-      {props.children}
-    </div>
-  );
-};
-
 root.render(
   <div>
-    <Greeting>
-      <Hello>西郷隆盛</Hello>
-      <Hello>坂本龍馬</Hello>
-    </Greeting>
   </div>
 );
 
