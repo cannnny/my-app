@@ -19,20 +19,35 @@ const TodoList = () => {
 
     // useStateにinitialStateを指定すると、todosにTodoリストが保存される
     const [todos, setTodos] = useState(initialState);
-    // 入力したタスクの情報を保持するための変数を追加
-    const [task, setTask] = useState('');
+    // 入力したタスクの情報を保持するための変数を定義
+    const [newTodo, setNewTodo] = useState('');
     // イベント時に実行される関数を定義
     const handleNewTask = (event) => {
-        setTask(event.target.value);
+        setNewTodo(event.target.value);
+    }
+    // 追加ボタンの押下時に実行される関数を定義
+    const handleSubmit = (event) => {
+        event.preventDefault() // リロードさせない
+        if(newTodo === '') return
+
+        setTodos(todos => 
+            [...todos, {task: newTodo, isCompleted: false}]
+        )
+        // 入力欄を初期化
+        setNewTodo('')
     }
 
     return(
         <div>
             <h1>TODO LIST</h1>
-            Add task : <input 
-                value={task}
-                placeholder='Add new Task'
-                onChange={handleNewTask} />
+            <form onSubmit = {handleSubmit}>
+            Add task : 
+                <input 
+                    value={newTodo}
+                    placeholder='Add new Task'
+                    onChange={handleNewTask}
+                />
+            </form>
             <ul>
                 {todos.map((todo, index) => (
                     <li key={index}>{todo.task}</li>
