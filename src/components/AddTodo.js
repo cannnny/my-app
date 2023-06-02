@@ -22,7 +22,7 @@ const AddTodo = ({setTodos}) => {
     };
 
     return (
-        <div>
+        <div className="addTask">
             <form onSubmit = {handleSubmit}>
             Add task : 
                 <input 

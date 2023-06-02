@@ -27,12 +27,14 @@ const ToDoList = ({todos, setTodos}) => {
                         style={{textDecoration: todo.isCompleted ? 'line-through': 'none'}}
                     >
                         <input
+                            className="checkbox"
                             type="checkbox"
                             checked={todo.isCompleted}
                             onChange={() => handleUpdateTask(index)}
                         />
                         {todo.task}
-                        <span
+                        <span 
+                            className="delete"
                             onClick={() => handleRemoveTask(index)}
                             style={{cursor: 'pointer'}}
                         >

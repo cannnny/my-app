@@ -24,7 +24,7 @@ const ToDo = () => {
 
     return (
         <div>
-            <h1>TODO LIST</h1>
+            <h1 className = "title">●◯TODO LIST◯●</h1>
             <AddTodo setTodos={setTodos} />
             <ToDoList todos={todos} setTodos={setTodos} />
         </div>
